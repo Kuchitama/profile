@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{name}}</title>
+  <meta name="description" content="{{name}}{{#if bio}} - {{bio}}{{/if}}">
+  <meta property="og:title" content="{{name}}">
+  <meta property="og:description" content="{{#if bio}}{{bio}}{{else}}Profile page{{/if}}">
+  <meta property="og:image" content="{{avatar}}">
+  <meta property="og:type" content="profile">
+  <link rel="icon" href="{{avatar}}">
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #555770;
+      --shadow: rgba(0, 0, 0, 0.08);
+      --btn-bg: #f0f2f5;
+      --btn-hover: #e2e4e9;
+      --btn-border: #d1d5db;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121218;
+        --card-bg: #1e1e2a;
+        --text: #e4e4ed;
+        --text-secondary: #a0a0b8;
+        --shadow: rgba(0, 0, 0, 0.3);
+        --btn-bg: #2a2a3a;
+        --btn-hover: #35354a;
+        --btn-border: #3d3d52;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 24px var(--shadow);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 1rem;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      background-color: var(--btn-bg);
+    }
+
+    .avatar-fallback {
+      width: 120px;
+      height: 120px;
+      border-radius: 1rem;
+      background-color: var(--btn-bg);
+      color: var(--text-secondary);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0 auto 1rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .bio {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .sns-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .sns-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      background-color: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background-color 0.15s ease;
+    }
+
+    .sns-link:hover {
+      background-color: var(--btn-hover);
+    }
+
+    .sns-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.25rem;
+        border-radius: 0.75rem;
+      }
+
+      .avatar {
+        width: 96px;
+        height: 96px;
+      }
+
+      .avatar-fallback {
+        width: 96px;
+        height: 96px;
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img
+      class="avatar"
+      src="{{avatar}}"
+      alt="{{name}}"
+      onerror="this.style.display='none';document.getElementById('avatar-fallback').style.display='flex';"
+    >
+    <div class="avatar-fallback" id="avatar-fallback">
+      {{avatarInitial}}
+    </div>
+    <h1>{{name}}</h1>
+    {{#if bio}}
+    <p class="bio">{{{nl2br bio}}}</p>
+    {{/if}}
+    {{#if hasLinks}}
+    <div class="sns-links">
+      {{#each links}}
+      <a class="sns-link" href="{{this.url}}" target="_blank" rel="noopener noreferrer">
+        {{{platformIcon this.platform}}}
+        <span>{{displayName this}}</span>
+      </a>
+      {{/each}}
+    </div>
+    {{/if}}
+  </main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+name: "Kuchitama"
+bio: |
+  Engineering Manager @ Monstarlab
+avatar: "images/kuchitama.png"
+links:
+  - platform: x
+    url: "https://x.com/kuchitama"
+  - platform: github
+    url: "https://github.com/Kuchitama"
+  - platform: linkedin
+    url: "https://linkedin.com/in/kuchitama"
+  - platform: speakerdeck
+    url: https://speakerdeck.com/kuchitama
