@@ -1,0 +1,38 @@
+# Profile Page Configuration
+# Edit this file and rename to profile.yml
+
+# Required: Your display name
+name: "Your Name"
+
+# Optional: A short bio (remove this line to hide bio)
+bio: "A short bio about yourself"
+
+# Required: Avatar image path (local file) or URL (external)
+# Local file example: "images/avatar.png"
+# External URL example: "https://example.com/avatar.jpg"
+avatar: "images/avatar.png"
+
+# Optional: Links (remove entire section for no links)
+# Known platforms with icons: x, github, linkedin, instagram, facebook, youtube, speakerdeck
+# Any other platform value will display as text-only
+links:
+  # Known platform (shows icon + name)
+  - platform: x
+    url: "https://x.com/yourhandle"
+
+  # Known platform (shows icon + name)
+  - platform: github
+    url: "https://github.com/yourhandle"
+
+  # Known platform (shows icon + name)
+  - platform: linkedin
+    url: "https://linkedin.com/in/yourhandle"
+
+  # Known platform (shows icon + name)
+  - platform: speakerdeck
+    url: "https://speakerdeck.com/yourhandle"
+
+  # Custom platform (shows text only, uses 'label' for display)
+  - platform: my-blog
+    url: "https://blog.example.com"
+    label: "Blog"
